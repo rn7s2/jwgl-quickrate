@@ -6,16 +6,15 @@ import pyautogui
 
 def clickCourse():
     select = [1 for _ in range(12)]
-    select[0] = 0
-    select[1] = 0
+    select[0:1] = [0, 0]
     random.shuffle(select)
 
-    for i, ploc, aloc in zip(
-        range(12),
+    for select, ploc, aloc in zip(
+        select,
         pyautogui.locateAllOnScreen("perfect.png"),
         pyautogui.locateAllOnScreen("almost.png"),
     ):
-        if select[i] == 1:
+        if select == 1:
             pyautogui.leftClick(x=ploc[0] - 10, y=ploc[1] + 10)
         else:
             pyautogui.leftClick(x=aloc[0] - 10, y=aloc[1] + 10)
